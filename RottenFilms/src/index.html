@@ -1,0 +1,109 @@
+<html>
+  <head>
+     <meta name="viewport" content="width=320, user-scalable=no">
+     <link href='http://fonts.googleapis.com/css?family=Sintony' rel='stylesheet' type='text/css'>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+     <script src="https://2plusapp.com/a/lib/handlebars.js"></script>
+
+     <script src="https://2plusapp.com/a/lib/base64.js"></script>
+     <script src="https://2plusapp.com/a/js/twoplus.js"></script>
+     
+     
+         <script type="text/javascript">
+    
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36768800-3']);
+  _gaq.push(['_setDomainName', '2plusapp.com']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+    
+    </script>
+    <script src="app.js"></script>
+
+    <style type="text/css">
+body {
+    font-family: 'Sintony', sans-serif;
+    background-color: #fafafa;
+}
+
+.movie {
+    margin-top:4px;
+    border-bottom:1px solid black;
+    font-size:18;
+}
+
+.movie .details img {
+    float:left;
+    padding: 6px;
+}
+
+.movie .details {
+    vertical-align:top;
+    font-size:12;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    height:98px;
+}
+
+.movie .details .text {
+    padding-top:4px;
+}
+
+
+.feature .details {
+    vertical-align:top;
+    font-size:16;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    height:450px;
+}
+
+.feature {
+    float:left;
+}
+
+.feature .details img {
+    float:left;
+    padding: 6px;
+}
+
+    </style>
+
+<script type="text/x-handlebars-template" id="movie-tmpl">
+    <div class="movie" onclick="shareMovie({{__index}})">
+        {{title}}
+        <div class="details">
+            <img src="{{posters.thumbnail}}" />
+            <div class="text">{{synopsis}}</div>
+        </div>
+    </div>
+</script>
+
+<script type="text/x-handlebars-template" id="feature-tmpl">
+    <div class="feature">
+        {{title}}
+        <div class="details">
+            <img src="{{posters.thumbnail}}" />
+            <div class="text">{{synopsis}}</div>
+            <div>
+              <a href="{{links.alternate}}">Learn More</a>
+            </div>
+        </div>
+        
+    </div>
+</script>
+
+</head>
+  
+  <body>
+      <div id="app">
+          Checking the box office...
+      </div>
+  </body>
+</html>

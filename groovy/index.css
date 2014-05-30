@@ -1,0 +1,83 @@
+body {
+	background-color: #eeeeee;
+	width: 100%;
+    height: 100%;
+    margin: 0;
+}
+
+p {
+	color: #586973;
+	font-family: "Helvetica";
+}
+
+.search-button-background {
+	position: relative;
+	width: 80%;
+	height: 40;
+	margin: auto;
+	text-align: center;
+	background-image: url(Images/search_background.png);
+}
+
+.search-button-text {
+	font-family: "Helvetica";
+	font-size: 24;
+	position: absolute;
+	color: white;
+	margin: auto;
+	top: 8;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
+
+.text-entry-label {
+	font-family: "Helvetica";
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	font-size: 18;
+	margin-bottom: 4px;
+}
+
+.text-entry-field {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 18px;
+}
+
+input {
+	font-family: "Helvetica";
+	margin: auto;
+	width: 100%;
+	background-color: white; 
+	font-size: 13px;
+	line-height: 18px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	padding-left: 8px;
+	padding-right: 8px;
+
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+.resultlist-songbutton {
+    display: block;
+    text-align: center;
+    padding-top : 5;
+    padding-bottom: 5;
+}
+
+.resultContainer {
+	width: 80%;
+	margin: auto;
+	padding-top: 20px;
+}
+
+.description {
+	width: 80%;
+	margin: auto;
+}

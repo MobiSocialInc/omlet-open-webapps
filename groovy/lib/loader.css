@@ -1,0 +1,100 @@
+/** http://codepen.io/palimadra/pen/puwEr */
+[class*="loader--"] {
+    width: 3em;
+    height: 3em;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.loader--pulse {
+    border-radius: 50%;
+    background: #3498db;
+
+    -webkit-animation: pulse .7s infinite linear;
+    -moz-animation: pulse .7s infinite linear;
+    -o-animation: pulse .7s infinite linear;
+    animation: pulse .7s infinite linear;
+}
+
+@keyframes "pulse" {
+    from {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+    to {
+        -webkit-transform: scale(2);
+        -moz-transform: scale(2);
+        -o-transform: scale(2);
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes pulse {
+    from {
+        -moz-transform: scale(1);
+        transform: scale(1);
+    }
+    to {
+        -moz-transform: scale(2);
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes "pulse" {
+    from {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    to {
+        -webkit-transform: scale(2);
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@-o-keyframes "pulse" {
+    from {
+        -o-transform: scale(1);
+        transform: scale(1);
+    }
+    to {
+        -o-transform: scale(2);
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes "load" {
+    0% { left: 0%;  }
+    50% { left: 35%;  }
+    100% { left: 100%;  }
+}
+
+@-moz-keyframes load {
+    0% { left: 0%; }
+    50% { left: 35%; }
+    100% { left: 100%; }
+}
+
+@-webkit-keyframes "load" {
+    0% { left: 0%; }
+    50% { left: 35%; }
+    100% { left: 100%; }
+}
+
+@-ms-keyframes "load" {
+    0% { left: 0%; }
+    50% { left: 35%; }
+    100% { left: 100%; }
+}
+
+@-o-keyframes "load" {
+    0% { left: 0%; }
+    50% { left: 35%; }
+    100% { left: 100%; }
+}
+

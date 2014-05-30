@@ -22,19 +22,8 @@ function SendGif(event)
 	{
 		console.log("Attempting to send!");
 		var obj = { "type" : "animatedGif", "data":{"imageUrl" : currentImage }};
-		ddx.send("SendObjAsync", obj, SendGifSuccess, SendGifFailure);
-		TwoPlus.exit();
+		Omlet.exit(obj);
 	}
-}
-
-function SendGifSuccess( response ) 
-{
-	console.log("Successfully Sent Gif!");
-}
-
-function SendGifFailure( response ) 
-{
-	console.log("Failure in Sending Gif.");
 }
 
 function SetUpRefresh()
@@ -55,30 +44,6 @@ function SetUpShare()
 
 	new NoClickDelay( shareDiv );
 	shareDiv.addEventListener('touchstart', SendGif, false );
-}
-
-/* Only try to see if we have DDX for 10 seconds */
-var maxTries = 200;
-var currentTry = 0;
-function checkDDXLoaded()
-{
-	if( typeof ddx !== 'undefined' )
-	{
-		//var searchButton = document.getElementById('search-button');
-		//new NoClickDelay( searchButton );
-
-		//searchButton.addEventListener('touchstart', startSearch, false );
-		SetUpShare();
-	}
-	else
-	{
-		currentTry = currentTry + 1;
-
-		if( currentTry < maxTries )
-			window.setTimeout( checkDDXLoaded, 50 );
-
-		console.log("Ping");
-	}
 }
 
 /*------------------------------
@@ -138,8 +103,6 @@ NoClickDelay.prototype = {
 $(function () 
 {
 	SetUpRefresh();
+	SetUpShare();
 	GetRandomGif();
-
-	//-- Ensure ddx is initialized before requesting anything from Omlet
-	checkDDXLoaded();
 } );

@@ -24,8 +24,8 @@ function watchDocument(docref, OnUpdate) {
 }
 
 function initDocument() {
-  if (TwoPlus.isInstalled()) {
-    documentApi = TwoPlus.document;
+  if (Omlet.isInstalled()) {
+    documentApi = Omlet.document;
     _loadDocument();
   } else {
     var yjclient = YeouijuClient.getInstance();
@@ -124,7 +124,7 @@ function InitialDocument() {
     }
     
     var initValues = {
-        'creator':TwoPlus.getIdentity(), 
+        'creator':Omlet.getIdentity(), 
         'pollCounts':pollCounts, 
         'voters':{},
         'poll': poll
@@ -137,7 +137,7 @@ function InitialDocument() {
 function DocumentCreated(doc) {
     
     var quikpoll = i18n.t("QuikPoll");
-    if(TwoPlus.isInstalled()) {
+    if(Omlet.isInstalled()) {
 
         var html = '<script>var pendingObj = [];';
         for(var i = 0; i < doc.pollCounts.length; i++) {
@@ -157,7 +157,7 @@ function DocumentCreated(doc) {
             html += '<div style="font-size: 30px; line-height: 75px; width: 290px; height: 75px; margin-left: auto; margin-right: auto; margin-top: 20px; text-align: center; border: 1px solid black; border-radius: 15px;" onclick="Omlet.sendObj(pendingObj['+i+'].Type, pendingObj['+i+']);">'+doc.poll['response'+i]+'</div>';
         }
 
-        var rdl = TwoPlus.createRDL({
+        var rdl = Omlet.createRDL({
                 noun: "poll",
                 displayTitle: quikpoll,
                 displayThumbnailUrl: "http://dhorh0z3k6ro7.cloudfront.net/apps/quikpoll/images/quikpoll.png",
@@ -165,8 +165,8 @@ function DocumentCreated(doc) {
                 displayHtmlSmall: html,
                 callback: encodeURI(window.location.href)
             });
-        TwoPlus.setPasteboard(rdl);
-        TwoPlus.exit();
+        Omlet.setPasteboard(rdl);
+        Omlet.exit();
     }
     else {
         ReceiveUpdate(doc);
@@ -209,14 +209,14 @@ function sharePoll() {
 function functionForResponse(response) {
 
     return function() {
-        var rdl = TwoPlus.createRDL({
+        var rdl = Omlet.createRDL({
                 noun: "poll response",
                 displayTitle: "WatchPoll",
                 displayText: "I voted for: " + myDoc.poll['response'+response],
                 callback: encodeURI(window.location.href)
             });
-        TwoPlus.setPasteboard(rdl);
-        TwoPlus.exit();
+        Omlet.setPasteboard(rdl);
+        Omlet.exit();
 
     };
 }
@@ -312,7 +312,7 @@ function ShowEmptyQuestionForm() {
 }
 
 //this is the entry point to your app, and is called by 2plus when it has finished loading it's stuff
-TwoPlus.ready(function() {
+Omlet.ready(function() {
 
     i18n.init(function(t) { 
       $('.i18n-text').i18n();

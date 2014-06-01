@@ -88,7 +88,7 @@ function shareSong( songInfo )
 		console.log(k + ": " + songInfo[k]);
 	}
 
-	var rdl = TwoPlus.createRDL({
+	var rdl = Omlet.createRDL({
       	noun: "song",
       	displayTitle: songInfo["SongName"],
       	displayThumbnailUrl: "http://sean-apps.s3-website-us-west-2.amazonaws.com/grooveshark/Images/eight_note.png",
@@ -97,8 +97,8 @@ function shareSong( songInfo )
       	callback: songInfo["Url"],
   	});
 
-  	TwoPlus.setPasteboard(rdl);
-  	TwoPlus.exit();  
+  	Omlet.setPasteboard(rdl);
+  	Omlet.exit();  
 }
 
 /*------------------------------

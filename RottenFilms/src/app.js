@@ -9,7 +9,7 @@ function shareMovie(index) {
 	var movie = JSON.parse(JSON.stringify(movies[index]));
 	delete movie.__index;
 	
-	var rdl = TwoPlus.createRDL({
+	var rdl = Omlet.createRDL({
     	noun: "movie",
     	displayTitle: movie.title + " | Rotten Tomatoes",
     	displayThumbnailUrl: movie.posters.thumbnail,
@@ -19,8 +19,8 @@ function shareMovie(index) {
     	callback: window.location.href,
     });
 
-    TwoPlus.setPasteboard(rdl);
-    TwoPlus.exit();
+    Omlet.setPasteboard(rdl);
+    Omlet.exit();
 }
 
 function rtApi(endpoint, callback) {
@@ -37,8 +37,8 @@ function rtApi(endpoint, callback) {
 	});
 }
 
-TwoPlus.ready(function() {
-  var movie = TwoPlus.getPasteboard();
+Omlet.ready(function() {
+  var movie = Omlet.getPasteboard();
   if (movie) {
 	  var template = Handlebars.compile($("#feature-tmpl").html());
 	  $("#app").html(template(movie.json));

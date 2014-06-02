@@ -38,16 +38,13 @@ function rtApi(endpoint, callback) {
 }
 
 Omlet.ready(function() {
-	ddx.log("@@@ READY!");
   var movie = Omlet.getPasteboard();
   if (movie) {
 	  var template = Handlebars.compile($("#feature-tmpl").html());
 	  $("#app").html(template(movie.json));
   } else {
-  	ddx.log("@@@ CHECK THE BOX!");
 	var template = Handlebars.compile($("#movie-tmpl").html());
     rtApi("/lists/movies/box_office.json?limit=20", function(json) {
-    	ddx.log("@@@ GOT SOME FLICKS!");
 	  movies = json.movies;
 	  $("#app").html("");
       for (i = 0; i < movies.length; i++) {

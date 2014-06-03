@@ -2,6 +2,9 @@ var API_KEY = /* GET AN API KEY FROM GROOVESHARK */;
 
 /*------------------------------
 	makes api call to TinySong for grooveshark music
+
+	cross domain request performs a get, 
+	tries to perform a Cross Domain Request (not guaranteed to succeed )
 ------------------------------*/
 function startSearch(event)
 {
@@ -15,7 +18,8 @@ function startSearch(event)
 	{
 		AccessURL : request
 	}
-	ddx.send( "CrossDomainRequest", obj, requestSuccess, requestFail );
+
+	Omlet.crossDomainRequest( obj, requestSuccess, requestFail );
 }
 
 /*------------------------------
@@ -97,8 +101,7 @@ function shareSong( songInfo )
       	callback: songInfo["Url"],
   	});
 
-  	Omlet.setPasteboard(rdl);
-  	Omlet.exit();  
+  	Omlet.exit(rdl);  
 }
 
 /*------------------------------
@@ -188,29 +191,12 @@ NoClickDelay.prototype = {
 };
 
 /*------------------------------
-	We make a couple DDX calls, which is how we talk to Omlet.  We just want to make sure is
-	is loaded before we make any
-------------------------------*/
-function checkDDXLoaded()
-{
-	if( typeof ddx !== 'undefined' )
-	{
-		var searchButton = document.getElementById('search-button');
-		new NoClickDelay( searchButton );
-
-		searchButton.addEventListener('touchstart', startSearch, false );
-	}
-	else
-	{
-		window.setTimeout( checkDDXLoaded, 50 );
-	}
-}
-
-/*------------------------------
 	This will be called when the js file loads
 ------------------------------*/
 $(function () 
 {
-	//-- Ensure ddx is initialized before requesting anything from Omlet
-	checkDDXLoaded();
+	var searchButton = document.getElementById('search-button');
+	new NoClickDelay( searchButton );
+
+	searchButton.addEventListener('touchstart', startSearch, false );
 } );

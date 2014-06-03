@@ -1,16 +1,15 @@
-//////////////////////////////
-///// Application Code ///////
-//////////////////////////////
-
-
+//keep track of how many response fields there are in the form
 var responseCount = 0;
 
-
+//share the poll back to the chat
 function sharePoll() {
+
+    //make sure there's a question
     if($('textarea#question').val().length == 0) {
         alert("Write a question!");
         return;
     }
+
     var count = 0;
     var responses = [];
     for(var i = 0; i < responseCount; i++) {
@@ -20,16 +19,26 @@ function sharePoll() {
             count++;
         }
     }
+
+    //make sure at least one response is filled out
     if(count == 0) {
         alert("Put an option!");
         return;
     }
 
+    //start building up the JSON for the poll obj that we want to put back into the chat
     var poll = {
         question : $('textarea#question').val()
     }
     poll["responses"] = JSON.stringify(responses);
 
+
+    /* we're going to build up some html that's going to be rendered on the watch
+     *
+     * we create an array of pending objects in a script tag at the top of the html
+     * in the UI part of the html, when someone taps on an option, we send the corresponding
+     * pendingObj back into the chat
+     */
     var html = '<script>var pendingObj = [];';
 
     for(var i = 0; i < count; i++) {
@@ -49,10 +58,12 @@ function sharePoll() {
 
         html += '<div style="font-size: 30px; background: #53575c; line-height: 60px; width: 290px; height: 60px; margin-left: auto; margin-right: auto; margin-top: 10px; text-align: center; font-size: 34px;" onclick="Omlet.sendObj(pendingObj['+i+'].Type, pendingObj['+i+']);">'+responses[i]+'</div>';
     }
+
+    //time to package up the poll JSON and the HTML into the RDL and ship it to Omlet
     var rdl = Omlet.createRDL({
         noun: "poll",
         displayTitle: "WatchPoll",
-        displayThumbnailUrl: "http://dhorh0z3k6ro7.cloudfront.net/apps/quikpoll/images/quikpoll.png",
+        displayThumbnailUrl: "http://ian-apps.s3-website-us-east-1.amazonaws.com/quikpoll/images/watchpoll.png",
         displayText: poll.question,
         json: poll,
         displayHtmlSmall: html,
@@ -61,9 +72,11 @@ function sharePoll() {
     Omlet.exit(rdl);
 }
 
+//we attach these to the poll responses for when someone taps on them
 function functionForResponse(response, poll) {
-
     return function() {
+
+        //repackage the existing poll JSON again so that if someone in a chat taps it, they can get back to the poll
         var rdl = Omlet.createRDL({
                 noun: "poll response",
                 displayTitle: "WatchPoll",
@@ -72,16 +85,10 @@ function functionForResponse(response, poll) {
                 callback: encodeURI(window.location.href)
             });
         Omlet.exit(rdl);
-
     };
 }
 
-
-/***************************************/
-
-
-
-//add additional response fields to the ui
+//add additional response fields to the UI
 function addResponse() {
     var option = String.fromCharCode(65 + responseCount);
     $("#responses").append('<p>Option ' + option + '</p><input id="answer'+responseCount+'" class="form_format" type="text">');
@@ -89,7 +96,7 @@ function addResponse() {
 }
 
 
-//show the poll form
+//show the poll with questions/responses pulled from the chat object
 function ShowQuestionForm(poll) {
     var responses = JSON.parse(poll.json.responses);
 
@@ -120,7 +127,7 @@ function ShowEmptyQuestionForm() {
     $("#submit").fastClick(sharePoll);
 }
 
-//this is the entry point to your app, and is called by 2plus when it has finished loading it's stuff
+//this is the entry point to your app, and is called by Omlet when it has finished loading it's stuff
 Omlet.ready(function() {
     var poll = Omlet.getPasteboard();
 

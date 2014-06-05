@@ -93,7 +93,7 @@ function shareSong( songInfo )
 	}
 
 	var rdl = Omlet.createRDL({
-      	noun: "song",
+      	noun: "a song",
       	displayTitle: songInfo["SongName"],
       	displayThumbnailUrl: "http://sean-apps.s3-website-us-west-2.amazonaws.com/grooveshark/Images/eight_note.png",
       	displayText: "Listen to '" + songInfo["SongName"] + "' by '" + songInfo["ArtistName"] + "' from '" + songInfo["AlbumName"] + "'",

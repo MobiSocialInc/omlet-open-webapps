@@ -44,7 +44,7 @@ function sharePoll() {
     for(var i = 0; i < count; i++) {
         var pendingObj = {
             "Type":"app",
-            "noun":"poll response",
+            "noun":"a poll response",
             "displayTitle":"WatchPoll",
             "displayText":"I voted for: " + responses[i],
             "json": poll,
@@ -61,7 +61,7 @@ function sharePoll() {
 
     //time to package up the poll JSON and the HTML into the RDL and ship it to Omlet
     var rdl = Omlet.createRDL({
-        noun: "poll",
+        noun: "a poll",
         displayTitle: "WatchPoll",
         displayThumbnailUrl: "http://ian-apps.s3-website-us-east-1.amazonaws.com/quikpoll/images/watchpoll.png",
         displayText: poll.question,
@@ -78,7 +78,7 @@ function functionForResponse(response, poll) {
 
         //repackage the existing poll JSON again so that if someone in a chat taps it, they can get back to the poll
         var rdl = Omlet.createRDL({
-                noun: "poll response",
+                noun: "a poll response",
                 displayTitle: "WatchPoll",
                 displayText: "I voted for: " + JSON.parse(poll.responses)[response],
                 json: poll,

@@ -10,7 +10,7 @@ function shareMovie(index) {
 	delete movie.__index;
 	
 	var rdl = Omlet.createRDL({
-    	noun: "movie",
+    	noun: "a movie",
     	displayTitle: movie.title + " | Rotten Tomatoes",
     	displayThumbnailUrl: movie.posters.thumbnail,
     	displayText: movie.synopsis,

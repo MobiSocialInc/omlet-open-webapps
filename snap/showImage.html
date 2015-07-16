@@ -1,0 +1,67 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Snap</title>
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable=no" />
+
+    <!--
+        <link rel="stylesheet" href="assets/css/ratchet.css">
+    <link rel="stylesheet" href="assets/css/positions.css">
+    <link href="assets/css/toastr.css" rel="stylesheet"/>
+
+    <link rel="stylesheet" href="assets/css/alertify.core.css" />
+    <link rel="stylesheet" href="assets/css/alertify.default.css" />
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet" />    
+
+    <script src="assets/js/ratchet.js"></script>  -->
+    <link href="assets/css/general.css" rel="stylesheet"/>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://omlet.me/a/lib/jquery-cookie.js"></script>
+    <script src="https://omlet.me/a/lib/base64.js"></script>
+    <script src="https://omlet.me/a/js/yeouiju.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>
+    <script src="assets/js/toastr.js"></script>
+    <script src="assets/js/handlebars.js"></script>
+    <script src="assets/js/jquery.touchSwipe.min.js"></script>
+    <script src="assets/js/osm.js"></script>
+    <script src="assets/js/twoplus.js"></script>
+    <script src="assets/js/i18next-1.7.1.min.js"></script>
+    <script src="assets/js/alertify.min.js"></script>
+
+    <script type="text/javascript" src="assets/js/jquery.leanModal.min.js"></script>
+    <script type="text/javascript" src="assets/js/spin.min.js"></script>
+
+    <link href="assets/css/showImage.css" rel="stylesheet"/>
+    <script type="text/javascript" src="assets/js/showImage.js"></script>
+    <script type="text/javascript" src="assets/js/snap-common.js"></script>
+</head>
+
+<body>
+    <div id="base">
+        <div class="bar-title" id="bar-title">
+            <h3 class="title i18n-text" id="header" data-i18n="loading"></h3>
+        </div>
+
+        <div id="display_error_div">
+            <div id="error_text">
+                <h2 class="i18n-text" data-i18n="oops"></h2>
+                <h4 class="i18n-text" data-i18n="snap-seen"></h4>
+            </div>
+            <img id="default_image_error" src="" />        
+        </div>
+
+        <div id="display-div">
+            <img id="picturesque" src="" />
+            <!-- <img id="picturesque" src="assets/images/npi.jpg" onerror="this.src='assets/image/default_snap.png'" width="100%" />
+            -->
+            <!-- image height/width... also prevent user from clicking to save raw image... can't do anything about snapshot can we? --> 
+        </div>
+        <div id="back_div">
+            <button type="button" id = "back_button"></button>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="app.js"></script>
+</body>
+
+</html>

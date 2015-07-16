@@ -1,0 +1,105 @@
+body {
+	margin: 0 auto 0 auto;
+	max-width: 720px;
+	font-family: Helvetica, Verdana, Blackletter;
+}
+
+.content {
+	width: 100%;
+	background-color: white;
+}
+
+#base {
+	max-width: 100%;
+	background-image:url('../image/1_bg.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
+	position: relative;
+}
+
+#picturesque {
+	width: 100%;
+	background: rgba(0, 0, 0, 0);
+}
+
+#user_image_div {
+	max-width: 100%;
+	height: 100%;
+	margin: 0 auto 0 auto;
+	position: relative;
+}
+
+#user_image_div h1 {
+	color: #64645a;
+	margin-left: 10%;
+	margin-bottom: 3px;
+	padding-top: 1em;
+}
+
+#base h3 {
+	color: #64645a;
+	margin-left: 0.5em;
+	padding-top: 1em;
+}
+
+#display_error_div {
+	position: absolute;
+	top: 10%;
+	left: 0;
+	right: 0;
+	margin: 0 auto 0 auto;
+	width: 77%;
+}
+
+#error_text {
+	color: #64645a;
+	width: 100%;
+	margin: 0 auto 0 auto;
+}
+
+#error_text h2 {
+	margin: 0.25em auto 0.25em auto;
+}
+
+#error_text h4 {
+	margin: 0.25em auto 0.25em auto;
+} 
+
+#default_image_error {
+	position: fixed;
+	top: 8em;
+	height: auto;
+	margin: 0 auto 0 auto;
+	width: 72%;
+}
+
+#user_image {
+	width: 100%;
+	height: auto;
+	margin: 0 auto 0 auto;
+	top:0 ;
+	position: absolute;
+}
+
+#back_div {
+	position: absolute;
+	bottom: 8%;
+	width: 40%;
+	max-width: 228px;
+    text-align: center;
+    margin: 0 auto 0 auto;
+    left: 0;
+    right: 0;
+}
+
+#back_div #back_button {
+	background-color: rgba(0, 0, 0, 0);
+	width: 100%;
+	height: 100%;
+	border: 0;
+	background-image: url("../image/ok_button.png");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+}

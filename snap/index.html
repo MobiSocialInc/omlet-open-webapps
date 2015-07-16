@@ -1,0 +1,71 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Snap</title>
+    <meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <!--
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    -->
+
+    <link href="assets/css/general.css" rel="stylesheet"/>
+    <link href="assets/css/index.css" rel="stylesheet"/>
+    <script src="assets/js/ratchet.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <script src="https://omlet.me/a/lib/jquery-cookie.js"></script>
+    <script src="https://omlet.me/a/lib/base64.js"></script>
+    <script src="https://omlet.me/a/js/yeouiju.js"></script>
+    <!--
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>
+    -->
+    <script src="assets/js/toastr.js"></script>
+    <script src="assets/js/handlebars.js"></script>
+    <script src="assets/js/jquery.touchSwipe.min.js"></script>
+    <script src="assets/js/osm.js"></script>
+    <script src="assets/js/twoplus.js"></script>
+    <script src="assets/js/i18next-1.7.1.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="assets/js/snap-common.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="assets/js/spin.min.js"></script>
+</head>
+
+<body>
+    <div id="user_image_div">
+        <h2 id="title">Snap</h2>
+        <h4 id="description" class="i18n-text" data-i18n="index-description"></h4>
+        <image src="assets/image/default_snap.png" id="default_image"></image>
+        <image src="" id="user_image"></image>
+    </div>
+    <div id="bottom_items">
+        <div id="second_selector">
+            <div id="clock_div">
+                <h5 id="second_text">5</h5>
+            </div>
+            <div id="input_selector_div">
+                <input id="input_selector" type="range" min="1" max="10" value="5" step="1" onchange="updateRange(this.value);"></div>
+
+        </div>
+
+        <div id="capture_button_div">
+            <!--<input type="button" id="capture_button" >
+            -->
+            <a class="capture_button" id="capture_button">
+				<image id="capture_img" src="assets/image/capture_img.png"></image>
+				<span id="capture-text" class="i18n-text" data-i18n="capture-button"></span>
+			</a>
+        </div>
+        <div id="send_button_div">
+            <a class="send_button" id="send_button">
+				<img id="send_button_img" src="assets/image/send_button_inactive_img.png">
+				<span id="send-text" class="i18n-text" data-i18n="send-button"></span>
+			</a>
+        </div>
+    </div>
+</body>
+    <script type="text/javascript">
+        $(document).ready(function() {
+        });
+    </script>
+</html>

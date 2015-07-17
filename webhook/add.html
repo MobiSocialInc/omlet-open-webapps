@@ -1,0 +1,99 @@
+<html>
+  <head>
+    <title>Web Hook</title>
+    <style type="text/css">
+      body {
+        background-color:#FFFFFF;
+      }
+      #logo {
+        height:10%;
+        background-image:url('piratehook.jpg');
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:contain;
+        width:100%;
+        margin:0;
+        padding:0;
+      }
+	  #title {
+        padding-top:5px;
+        padding-bottom:5px;
+        text-align:center;
+        font-size:26px;
+      }
+      #name {
+        padding-top:5px;
+        padding-bottom:5px;
+        text-align:center;
+      }
+      #account {
+        padding-top:5px;
+        padding-bottom:5px;
+        text-align:center;
+      }
+      #in {
+        border: dotted;
+      }
+      #button {
+        padding-top:5px;
+        padding-bottom:5px;
+        text-align:center;
+      }
+      #type {
+        padding-top:5px;
+        padding-bottom:5px;
+        text-align:center;
+      }
+      #error {
+        display:none;
+        padding-top:5px;
+        padding-bottom:5px;
+        text-align:center;
+        color:red;
+      }
+        
+    </style>
+  </head>
+
+  <script src="https://omlet.me/a/lib/base64.js"></script>
+  <script src="https://omlet.me/a/js/yeouiju.js"></script>
+  <script src="https://omlet.me/a/js/twoplus.js"></script>
+	
+  <body>
+    <div id="logo"></div>
+    <div id="title">Add a Bot</div>
+    <div id="name">Name: <input type='text' id='in_name' value="Some Bot"></div>
+    <div id="account">Account: <input type='text' id='in_account' value=""></div>
+    <div id="button"><button id="go" onclick='go();'>Go</button></div>
+    <div id="error">Access Denied</div>
+  </body>
+  
+  <script>
+    function go() {
+      var account = document.getElementById('in_account').value;
+	  var name = document.getElementById('in_name').value;
+      var req = 
+      {
+        Identity: account,
+        PublisherName : name
+      };
+      if(req.PublisherName.trim() == "") {
+        alert('You must enter a name');
+        return;
+      }
+      if(req.Identity.trim() == "") {
+        alert('You must enter an Account');
+        return;
+      }
+      ddx.send( 
+        "AddSubscriptionIdentityToFeed",
+        req, ok, fail );
+    }
+    function ok(resp) {
+	  ddx.send("Exit");
+    }
+    function fail() {
+      document.getElementById('error').style.display = 'block';
+    }
+  </script>
+</html>

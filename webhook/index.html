@@ -1,0 +1,134 @@
+<html>
+  <head>
+    <title>Web Hook</title>
+    <style type="text/css">
+      body {
+        background-color:#FFFFFF;
+      }
+      #logo {
+        height:10%;
+        background-image:url('piratehook.jpg');
+        background-position:center;
+        background-repeat:no-repeat;
+        background-size:contain;
+        width:100%;
+        margin:0;
+        padding:0;
+      }
+      #title {
+        padding-top:5px;
+        padding-bottom:5px;
+        text-align:center;
+        font-size:26px;
+      }
+      #name {
+        padding-top:5px;
+        padding-bottom:5px;
+        text-align:center;
+      }
+      #in {
+        border: dotted;
+      }
+      #button {
+        padding-top:5px;
+        padding-bottom:5px;
+        text-align:center;
+      }
+      #type {
+        padding-top:5px;
+        padding-bottom:5px;
+        text-align:center;
+      }
+      #url {
+        display:none;
+        padding-top:5px;
+        padding-bottom:5px;
+        text-align:center;
+      }
+      #who {
+        display:none;
+        padding-top:5px;
+        padding-bottom:5px;
+        text-align:center;
+      }
+      .help {
+        display:none;
+        padding-top:5px;
+        padding-bottom:5px;
+        text-align:center;
+        color:blue;
+      }
+      #error {
+        display:none;
+        padding-top:5px;
+        padding-bottom:5px;
+        text-align:center;
+        color:red;
+      }
+        
+    </style>
+  </head>
+
+  <script src="https://omlet.me/a/lib/base64.js"></script>
+  <script src="https://omlet.me/a/js/yeouiju.js"></script>
+  <script src="https://omlet.me/a/js/twoplus.js"></script>
+	
+  <body>
+    <div id="logo"></div>
+    <div id="title">Create a Web Hook</div>
+    <div id="name">Name: <input type='text' id='in'></div>
+    <div id="type">Type: 
+      <select id="kind">
+        <option value="Text">Plain Text</option>
+        <option value="GitHub">GitHub</option>
+        <option value="BitBucket">BitBucket</option>
+        <option value="Jira">Jira</option>
+      </select>
+    </div>
+    <div id="button"><button id="go" onclick='go();'>Go</button></div>
+    <div id="error">Access Denied</div>
+    <div id="url">URL: <input type='text' id='out_url'></div>
+    <div id="help_who" class="help">Copy this URL and register it with your service</div>
+    <div id="who">Account: <input type='text' id='out_who'></div>
+    <div id="help_url" class="help">Add this bot account to a chat to receive messages in that chat</div>
+  </body>
+  
+  <script>
+    function go() {
+      var base = window.location.href.split('/');
+      base = base.splice(0, base.length - 1);
+      base = base.join('/');
+      var type = document.getElementById('kind').value;
+      var req = 
+      {
+        Type: type,
+        PublisherName : document.getElementById('in').value,
+        PublisherThumbnailUrl : base + "/" + type + ".jpg"
+      };
+      if(req.PublisherName.trim() == "") {
+        alert('You must enter a name');
+        return;
+      }
+      ddx.send( 
+        "GetSubscriptionPublishURL",
+        req, ok, fail );
+    }
+    function ok(resp) {
+      document.getElementById('in').setAttribute('readonly', "true");
+      document.getElementById('kind').setAttribute('disabled', "true");
+      document.getElementById('button').style.display = 'none';
+      document.getElementById('error').style.display = 'none';
+      document.getElementById('url').style.display = 'block';
+      document.getElementById('who').style.display = 'block';
+      document.getElementById('help_who').style.display = 'block';
+      document.getElementById('help_url').style.display = 'block';
+      var text = document.getElementById('out_url');
+      text.value = resp.HookURL;
+      var account = document.getElementById('out_who');
+      account.value = resp.PublisherPrincipal;
+    }
+    function fail() {
+      document.getElementById('error').style.display = 'block';
+    }
+  </script>
+</html>

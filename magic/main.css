@@ -1,0 +1,13 @@
+body {
+	color: #ddd;
+	background-color: #000;
+}
+
+* {
+	font-size: 30px;
+}
+
+.player input {
+	width:80px;
+	background-color: #fff;
+}

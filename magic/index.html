@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>Let's Play</title>
+    
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://omlet.me/a/lib/jquery-cookie.js"></script>
+    <script type="text/javascript" src="https://omlet.me/a/lib/fastclick.min.js"></script>
+    <script type="text/javascript" src="https://omlet.me/a/js/omlet.js"></script>
+  </head>
+  <body>
+  
+<div id="app">
+</div>
+
+<script type="text/template" id="settings_template">
+  <div id="settings">
+    <p>How many players?</p>
+    <button onclick="StartGame(1)">1</button>
+    <button onclick="StartGame(2)">2</button>
+    <button onclick="StartGame(3)">3</button>
+    <button onclick="StartGame(4)">4</button>
+    <button onclick="StartGame(5)">5</button>
+  </div>
+</script>
+
+<!-- App -->
+  <script src="app.js"></script>
+</body>
+</html>
